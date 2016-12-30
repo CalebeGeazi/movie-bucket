@@ -1,0 +1,80 @@
+#app {
+  margin: auto 10px;
+}
+
+.loading {
+  display: none;
+}
+.loading.active {
+  display: block;
+}
+
+footer {
+  margin-top: 50px;
+  clear: both;
+}
+
+.movieInfo-snippet {
+    padding: 10px;
+    min-width: 290px;
+}
+
+.movieInfo-snippet-img {
+    float: left;
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.movieInfo-snippet-buttons {
+    position: absolute;
+    bottom: 15px;
+    left: 140px;
+}
+
+.movieInfo-snippet-buttons > .btn {
+  margin: 5px 0;
+  display: block;
+}
+
+.movieInfo-snippet-title {
+    font-size: 18px;
+    width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.movieInfo-full {
+    padding: 10px;
+    margin: auto;
+}
+
+.movieInfo-full-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+
+.movieInfo-full-img {
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.movieInfo-full-text {
+    margin-bottom: 15px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .movieInfo-full-img {
+    float: left;
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
