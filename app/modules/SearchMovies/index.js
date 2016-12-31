@@ -24,7 +24,6 @@ export default class SearchMovies extends React.Component {
   }
 
   addToList = (movie) => {
-    movie.addToList(movie);
     this.props.moviesStore.addToList(movie);
   }
 

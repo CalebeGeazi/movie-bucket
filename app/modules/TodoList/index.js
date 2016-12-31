@@ -1,31 +1,24 @@
 import React from "react"
 import { observer, inject } from "mobx-react"
+import TodoInfo from "./components/todoInfo";
 
 @inject('todoStore') @observer
 export default class TodoList extends React.Component {
   toggleWatched = (todo) => {
     this.props.todoStore.toggleWatched(todo);
   }
+
   render() {
-    console.log(this.props);
-    const { unwatchedTodos } = this.props.todoStore;
-    if (unwatchedTodos) {
-      var todoLis = unwatchedTodos.map((todo, i) => (
-        <li key={todo.movie.data.id}>
-          {console.log(todo)}
-          <input
-            type="checkbox"
-            value={todo.watched}
-            checked={todo.watched}
-            onChange={() => this.toggleWatched(todo)}/>
-          {todo.movie.data.title}
-        </li>
-      ));
-    }
+    const { todos, unwatchedTodos } = this.props.todoStore;
+    const todoLis = unwatchedTodos ? unwatchedTodos.map((todo, i) => (
+      <div key={todo.movie.data.id} className="col-lg-1 col-md-2 col-sm-3 col-xs-4 movieInfo-snippet">
+        <TodoInfo todo={todo} type="snippet" toggleWatched={this.toggleWatched} />
+      </div>
+    )) : "";
+
     return (
       <div>
-        <h1>Todos</h1>
-        <ul>{todoLis}</ul>
+        {todoLis}
       </div>
     )
   }

@@ -16,6 +16,7 @@ class Todo {
 
 
 class TodoStore {
+  @observable todos;
   @computed get toJson() {
     // The storage representation of the notes collection.
     return this.todos.slice();
@@ -45,6 +46,7 @@ class TodoStore {
 
   @action toggleWatched(todo) {
     todo.watched = !todo.watched;
+    console.log(todo.watched);
   }
 
   load() {

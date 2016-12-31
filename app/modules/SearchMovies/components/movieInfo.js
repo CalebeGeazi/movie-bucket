@@ -17,7 +17,7 @@ export default class MovieInfo extends React.Component {
               onClick={() => this.props.fetchMovieData(this.props.movie)}>Get Info
             </button>
             <button className="btn btn-sm btn-success"
-              onClick={() => this.props.addToList(this.props.movie)}>+ Wishlist
+              onClick={() => this.props.addToList(this.props.movie)}>+ Watchlist
             </button>
           </div>
         </div>
@@ -30,8 +30,13 @@ export default class MovieInfo extends React.Component {
 
       const cast = movie.cast.map((person, i) => person.name);
 
-      const availableSources = movie.subscription_web_sources.concat(movie.purchase_web_sources)
-        .map((source, i) => source.display_name);
+      const availableSources = movie.subscription_web_sources.concat(movie.purchase_web_sources);
+      const availableSourcesHtml = availableSources.map((source, i) => {
+          console.log(source.link);
+          console.log(source.display_name);
+          return <a key={i} href={source.link} target="_blank">{source.display_name}
+            { availableSources.length - 1 === i ? '' : ', '}</a>;
+        });
 
       return (
         <div>
@@ -40,14 +45,24 @@ export default class MovieInfo extends React.Component {
           <div className="movieInfo-full-img">
             <img src={movie.poster_400x570} alt={`${movie.title} image`} className="img-responsive"/>
           </div>
-          <div className="movieInfo-full-text"><strong>Overview: </strong><i>{movie.overview}</i></div>
-          <div className="movieInfo-full-text"><strong>Release Date: </strong>{formattedDate}</div>
-          <div className="movieInfo-full-text"><strong>Rated: </strong>{movie.rating}</div>
-          <div className="movieInfo-full-text"><strong>Cast: </strong>{cast.splice(0, 4).join(', ')}</div>
-          <div className="movieInfo-full-text"><strong>Available On: </strong>{availableSources.join(', ')}</div>
-            <button className="btn btn-success"
-              onClick={() => this.props.addToList(this.props.movie)}>+ Wishlist
-            </button>
+          <div className="movieInfo-full-text">
+            <strong>Overview: </strong><i>{movie.overview}</i>
+          </div>
+          <div className="movieInfo-full-text">
+            <strong>Release Date: </strong>{formattedDate}
+          </div>
+          <div className="movieInfo-full-text">
+            <strong>Rated: </strong>{movie.rating}
+          </div>
+          <div className="movieInfo-full-text">
+            <strong>Cast: </strong>{cast.splice(0, 4).join(', ')}
+          </div>
+          <div className="movieInfo-full-text">
+            <strong>Available On: </strong>{availableSourcesHtml}
+          </div>
+          <button className="btn btn-success"
+            onClick={() => this.props.addToList(this.props.movie)}>+ Wishlist
+          </button>
         </div>
       );
     }

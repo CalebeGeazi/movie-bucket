@@ -39,7 +39,6 @@ footer {
 
 .movieInfo-snippet-title {
     font-size: 18px;
-    width: 175px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

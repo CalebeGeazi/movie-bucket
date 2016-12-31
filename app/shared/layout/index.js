@@ -21,7 +21,6 @@ export default function App({ children }) {
           {children}
         </Provider>
       </main>
-      <DevTools />
       <Footer />
     </div>
   );
